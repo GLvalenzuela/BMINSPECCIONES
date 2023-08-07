@@ -1,17 +1,8 @@
-/* -----------------------------------------------
-/* Author : Vincent Garreau  - vincentgarreau.com
-/* MIT license: http://opensource.org/licenses/MIT
-/* Demo / Generator : vincentgarreau.com/particles.js
-/* GitHub : github.com/VincentGarreau/particles.js
-/* How to use? : Check the GitHub README
-/* v2.0.0
-/* ----------------------------------------------- */
-
 var pJS = function(tag_id, params){
 
   var canvas_el = document.querySelector('#'+tag_id+' > .particles-js-canvas-el');
 
-  /* particles.js variables with default values */
+  /* particles.js variables */
   this.pJS = {
     canvas: {
       el: canvas_el,
@@ -136,7 +127,7 @@ var pJS = function(tag_id, params){
 
   var pJS = this.pJS;
 
-  /* params settings */
+  /* CONFIGURACION DE PARAMETROS */
   if(params){
     Object.deepExtend(pJS, params);
   }
@@ -182,7 +173,7 @@ var pJS = function(tag_id, params){
 
 
 
-  /* ---------- pJS functions - canvas ------------ */
+  /* ---------- pJS FUNCIONES - canvas ------------ */
 
   pJS.fn.canvasInit = function(){
     pJS.canvas.ctx = pJS.canvas.el.getContext('2d');
@@ -200,7 +191,7 @@ var pJS = function(tag_id, params){
           pJS.canvas.w = pJS.canvas.el.offsetWidth;
           pJS.canvas.h = pJS.canvas.el.offsetHeight;
 
-          /* resize canvas */
+          /* CAMBIO DE TAMAÑO DE PANTALLA */
           if(pJS.tmp.retina){
             pJS.canvas.w *= pJS.canvas.pxratio;
             pJS.canvas.h *= pJS.canvas.pxratio;

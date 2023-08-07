@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Planilla</title>
+	
+	<link rel="stylesheet" href="style.css">
+	
+	
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.min.css">
+</head>
+	
+	<body>
+
+
+	<div class="container">
+  <div class="column">
+    <img src="img/logo.jpg" alt="Logo">
+  </div>
+  <div class="column">
+    <p class="resultado">REPORTE PRELIMINAR DE INSPECCION CON INDICACIONES</p>
+  </div>
+  <div class="column">
+    <img src="img/dls.jfif" alt="Imagen 1" class="fotologo" id="imagenMostrada" onclick="cambiarImagen()">
+	  
+	  
+	   <script>
+    function cambiarImagen() {
+      var imagen = document.getElementById('imagenMostrada');
+      if (imagen.src.endsWith('img/dls.jfif')) {
+        imagen.src = 'img/sesasa.jfif';
+        imagen.alt = 'Imagen 2';
+      } else {
+        imagen.src = 'img/dls.jfif';
+        imagen.alt = 'Imagen 1';
+      }
+    }
+  </script>
+	  
+	  
+	  
+	  
+	  
+  </div>
+</div>
+	
+	<div class="container2">
+  <div class="column2">
+   
+	  <form>
+   <div class="fila">
+    <label for="campo2">Fecha y Hora:</label>
+    <input type="text" id="campo2" name="campo2">
+  </div>
+  <div class="fila">
+    <label for="campo2">SECTOR:</label>
+    <input type="text" id="campo6" name="campo2">
+  </div>
+  <div class="fila">
+    <label for="campo3">PARTE DEL SERVICIO:</label>
+    <input type="text" id="campo3" name="campo3">
+  </div>
+  <div class="fila">
+    <label for="campo4">LUGAR:</label>
+    <input type="text" id="campo4" name="campo4">
+  </div>
+  <div class="fila">
+    <label for="campo5">DESCRIPCION Y SN:</label>
+    <input type="text" id="campo5" name="campo5">
+  </div>
+</form>
+	  
+	  <script>
+    // Función para obtener la fecha y hora actual en formato legible
+    function obtenerFechaHoraActual() {
+      const fechaHoraActual = new Date();
+      const fechaHoraFormateada = fechaHoraActual.toLocaleString();
+      return fechaHoraFormateada;
+    }
+
+    // Función para establecer la fecha y hora actual en el campo de entrada
+    function mostrarFechaHoraActual() {
+      const campoFechaHora = document.getElementById('campo2');
+      campoFechaHora.value = obtenerFechaHoraActual();
+    }
+
+    // Llamar a la función para mostrar la fecha y hora actual al cargar la página
+    mostrarFechaHoraActual();
+  </script>
+
+	  
+	  
+  </div>
+  <div class="column2">
+    <p class="resultado">RESULTADO DEL ENSAYO <p class="noapto">NO APTO</p></p>
+  </div>
+  
+</div>
+	
+		
+		
+		<div class="contenedor3">
+			
+			
+			<div class="foto" style="background-image: url('ruta-de-la-foto-1.jpg');"></div>
+    <div class="foto" style="background-image: url('ruta-de-la-foto-2.jpg');"></div>
+    <div class="foto" style="background-image: url('ruta-de-la-foto-3.jpg');"></div>
+    <div class="foto" style="background-image: url('ruta-de-la-foto-4.jpg');"></div>
+    <input type="file" accept="image/*" id="fileInput" multiple>
+			
+			
+			
+			
+		</div>
+		
+		
+		 <script>
+    // Función para cambiar la foto al tocarla
+    function cambiarFoto(event) {
+      const foto = event.target;
+      const fileInput = document.getElementById('fileInput');
+      fileInput.onchange = function (e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function () {
+          foto.style.backgroundImage = `url('${reader.result}')`;
+        };
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      };
+      fileInput.click();
+    }
+
+    // Agregar evento para cambiar la foto al tocarla
+    const fotos = document.querySelectorAll('.foto');
+    fotos.forEach(foto => {
+      foto.addEventListener('click', cambiarFoto);
+    });
+  </script>
+		
+		
+		
+		
+		
+		
+		
+			
+			<div class="contedor4">
+    <span class="leyenda">Observaciones:</span>
+    <textarea id="observaciones" name="observaciones" rows="4"></textarea>
+  </div>
+			
+			
+		
+	
+			<div class="contenedor5">
+    <span>Informo:</span>
+    <form>
+      <select id="nombres" name="nombres">
+        <option value="nombre1">Julio Manzerata</option>
+        <option value="nombre2">Daniel Elgueta</option>
+        <option value="nombre3">Ivan maiorano</option>
+        <option value="nombre4">Nahuel Hernandez</option>
+      </select>
+    </form>
+  </div>
+
+			
+			
+  <script type="text/javascript" src="jspdf.min.js"></script>
+	
+	
+	
+  <a href="javascript:genPDF()" target="_blank" ><button id="botonPDF">Guardar como PDF y Enviar por Correo</button></a>
+	
+	
+  <script type="text/javascript">
+      function genPDF(){
+          var doc=new jsPDF();
+          let texto=document.getElementById('miplanilla').value;
+          doc.addPage(20,20,'texto');
+          doc.save('Dlsnoapto.pdf')
+          doc.addPage();
+      }
+  </script>
+
+
+</body>
+</html>
